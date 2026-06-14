@@ -2,6 +2,7 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/hello-pages/',
   server: {
     port: 3000,
     strictPort: true,

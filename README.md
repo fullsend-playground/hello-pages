@@ -2,6 +2,8 @@
 
 Static web pages for [fullsend-playground](https://github.com/fullsend-playground), published to GitHub Pages.
 
+**Live site:** [fullsend-playground.github.io/hello-pages](https://fullsend-playground.github.io/hello-pages/)
+
 ## What's in this repo
 
 | Path | Purpose |
@@ -37,7 +39,7 @@ npm run build
 npm run preview
 ```
 
-The preview server runs on port `3001`.
+The preview server runs on port `3001`. With the Vite `base` set to `/hello-pages/` (matching the repo name for GitHub Pages project sites), open [http://localhost:3001/hello-pages/](http://localhost:3001/hello-pages/) to preview the production build.
 
 ## Adding a new page
 
@@ -50,9 +52,9 @@ The preview server runs on port `3001`.
 
 Pushes to `main` trigger the **Deploy GitHub Pages** workflow, which builds the site and publishes the `dist/` output to GitHub Pages.
 
-After the first successful deploy, the site is available at:
+The Vite `base` in [`vite.config.js`](vite.config.js) must match the repository name (`/hello-pages/`) so asset URLs resolve correctly on a project site.
 
-`https://fullsend-playground.github.io/hello-pages/`
+The live site is at [https://fullsend-playground.github.io/hello-pages/](https://fullsend-playground.github.io/hello-pages/).
 
 ## License
 
