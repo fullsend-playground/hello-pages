@@ -1,0 +1,25 @@
+name: Grant fullsend app access
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  grant:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add hello-pages to fullsend-ai app installations
+        env:
+          TOKEN: ${{ secrets.ORG_INVITE_TOKEN }}
+          REPO_ID: "1269009156"
+        run: |
+          set -euo pipefail
+          for INST in 137047507 137049048 137049096 137049138 137049174; do
+            echo "Adding repo to installation ${INST}..."
+            curl -sf -X PUT \
+              -H "Authorization: token ${TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/user/installations/${INST}/repositories/${REPO_ID}"
+            echo "OK: installation ${INST}"
+          done
