@@ -17,9 +17,14 @@ jobs:
           set -euo pipefail
           for INST in 137047507 137049048 137049096 137049138 137049174; do
             echo "Adding repo to installation ${INST}..."
-            curl -sf -X PUT \
+            HTTP=$(curl -s -o /tmp/resp.txt -w "%{http_code}" -X PUT \
               -H "Authorization: token ${TOKEN}" \
               -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/user/installations/${INST}/repositories/${REPO_ID}"
+              "https://api.github.com/user/installations/${INST}/repositories/${REPO_ID}")
+            cat /tmp/resp.txt
+            echo "HTTP ${HTTP}"
+            if [ "$HTTP" != "204" ]; then
+              exit 1
+            fi
             echo "OK: installation ${INST}"
           done
