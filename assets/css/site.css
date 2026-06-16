@@ -64,3 +64,28 @@ body {
   letter-spacing: 0.02em;
   color: var(--text-secondary);
 }
+
+.site-footer {
+  padding: 2rem;
+  text-align: center;
+}
+
+.site-footer__nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.site-footer__nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease;
+}
+
+.site-footer__nav a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
